@@ -25,7 +25,6 @@ class App extends Component {
 
     // Next, check if there are more than 100 posts. If so, delete the oldest. 
 
-
   }
   
   addResponse(e){
@@ -33,11 +32,24 @@ class App extends Component {
 
     var inputValue = this.inputEl.value;
     fire.database().ref('user_response').push( {opinion: inputValue, response_time: firebase.database.ServerValue.TIMESTAMP, answer: 1, id: this.state.counter});
-
-    this.inputEl.value = ''; // Reset the input value
+    
     inputValue = this.inputEl.value;
     
   }
+
+  // Bind this function to the textbox. 
+  optionText(e){
+    var inputValue = this.inputEl.value;
+    // If the textbox is active/selected AND it's set to Default, then blank it
+    if (inputValue == "(Optional) Please Share What Caused Your Ordeal!"){
+      this.inputEl.value = "";
+    } 
+    else if(inputValue == "" || inputValue == Null){
+      this.inputEl.value = "(Optional) Please Share What Caused Your Ordeal!";
+    }   
+  }
+
+
 
   render() {
     return (
@@ -45,7 +57,7 @@ class App extends Component {
         
         <h1>Is your Day Ruined?</h1>
         <input type="submit" value="Yes, it is" />
-        <input type="text" ref={ el => this.inputEl = el }/>
+        <input type="text" name="reason" ref={ el => this.inputEl = el } onClick=""/>
         
         <p>Number of ruined people today: {this.state.counter}</p>        
         <ul>
