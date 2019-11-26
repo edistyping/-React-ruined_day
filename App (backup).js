@@ -34,10 +34,6 @@ class App extends Component {
 
   }
   
-  // Intially set 'counter' to 0 in the consturctor
-  // First id is 0
-  // In ComponentWillMount(), add on('child_added') to  
-
   addResponse(e){
     e.preventDefault();
 
@@ -45,30 +41,34 @@ class App extends Component {
     fire.database().ref('user_response').push( {opinion: inputValue, response_time: firebase.database.ServerValue.TIMESTAMP, answer: 1, id: this.state.counter});
 
     this.inputEl.value = ''; // Reset the input value
-    inputValue = this.inputEl.value;
-    
+    inputValue = this.inputEl.value;    
   }
 
   render() {
     return (
+      
       <form onSubmit={this.addResponse.bind(this)}>
         
         <h1>Is your Day Ruined?</h1>
         <input type="submit" value="Yes, it is" />
-        <input type="text" ref={ el => this.inputEl = el }/>
+        <input type="text" ref={ el => this.inputEl = el }   />
         
-        <p>Number of ruined people today: {this.state.counter}</p>        
-        <ul>
-        {
-          this.state.opinions.map( opinion => <li key={opinion.id}>{opinion.row_num}: {opinion.text}</li> )
-        }
-        </ul>
-      </form>
+        <div>
+          <p>Number of ruined people today: {this.state.counter}</p>        
+          <ul>
+          {
+            this.state.opinions.map( opinion => <li key={opinion.id}>{opinion.row_num}: {opinion.text}</li> )
+          }
+          </ul>
+        </div>
 
+      </form>
+    
 
   );}
  
 }
 
 export default App;
+
 

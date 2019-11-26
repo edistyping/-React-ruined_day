@@ -1,3 +1,4 @@
+
 form {
     margin: 15px 0;
 }
@@ -7,6 +8,11 @@ form input[type='text'] {
     border-radius: 5px;
     padding: 5px;
     width: 75%;
+
+    display: block;
+    text-align: left;
+    margin: auto;
+    border-radius: 15px;
 }
 
 form input[type='submit'] {
@@ -18,8 +24,31 @@ form input[type='submit'] {
     font-weight: bold;
     padding: 7px 5px;
     width: 19%;
+    
+    margin: 25px auto;
+
+    display: block;
+    text-align: Center;
+    font-size: 28px;
+    border-radius: 15px;
 }
 
+h1 {
+    font-size: 48px;
+    text-align: center;
+    
+    border-radius: 15px;
+    border: #eb5424;
+    border-width: 15px;
+    border-style: solid;
+}
 
+div {
+    text-align: center;
+    list-style-position: inside;
+    padding: 50px 0px;
+}
 
-
+li {
+    text-align: left;
+}
