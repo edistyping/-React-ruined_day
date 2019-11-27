@@ -51,4 +51,16 @@ div {
 
 li {
     text-align: left;
+    font-size: 18px;
+}
+
+ul {
+    padding-left: 300px;
+    padding-right: 300px;
+    color: black;
+    font-weight: bold;
+}
+
+p {
+    font-weight: bold;
 }
