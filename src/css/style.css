@@ -43,10 +43,17 @@ h1 {
     border-style: solid;
 }
 
-div {
+
+.test0 {
     text-align: center;
     list-style-position: inside;
     padding: 50px 0px;
+}
+
+.reasons_list {
+    text-align: center;
+    list-style-position: inside;
+    padding-left: 400px;
 }
 
 li {

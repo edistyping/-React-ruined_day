@@ -4,12 +4,42 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Fade from 'react-reveal/Fade';
 import Pulse from 'react-reveal/Pulse'
 
-import { InfiniteLoader, List } from 'react-virtualized';
-import 'react-virtualized/styles.css'; // only needs to be imported once
 
 import fire from "./fire";
 import firebase from 'firebase';
 
+import { InfiniteLoader, List } from 'react-virtualized';
+import 'react-virtualized/styles.css'; // only needs to be imported once
+
+///////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////
+// This example assumes you have a way to know/load this information
+var list = [0,1,2];
+var remoteRowCount = 25;
+var wtfisgoing;
+function isRowLoaded ({ index }) {
+  return !!list[index];
+}
+
+function loadMoreRows ({ startIndex, stopIndex }) {
+  return fetch(`path/to/api?startIndex=${startIndex}&stopIndex=${stopIndex}`)
+    .then(response => {
+      // Store response data in list...
+    })
+}
+
+function rowRenderer ({ key, index, style}) {
+  return (
+    <div
+      key={key}
+      style={style}
+    >
+      {list[index]}
+    </div>
+  )
+}
+///////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////
 
 class App extends Component {
   constructor(props) {
@@ -27,7 +57,7 @@ class App extends Component {
     responseRef.on('child_added', snapshot => {
       let response = { reason: snapshot.val().opinion, id: snapshot.key, row_num: snapshot.val().id };   
       this.setState({ reasons: [response].concat(this.state.reasons), counter: (snapshot.val().id + 1) });
-      console.log("componentwillmount() here... ");
+      
     })
 
     // Next, check if there are more than 100 posts. If so, delete the oldest. 
@@ -40,9 +70,12 @@ class App extends Component {
     // Fetch the data in the input textbox and load it the database with the inserted_time
     var inputValue = this.inputEl.value;
     fire.database().ref('user_response').push( {opinion: inputValue, response_time: firebase.database.ServerValue.TIMESTAMP, answer: 1, id: this.state.counter});
-
+    
     // Reset the input textbox  
-    this.inputEl.value = "";    
+    this.inputEl.value = ""; 
+
+    list.push(inputValue);
+   
   }
 
   // Bind this function to the textbox. 
@@ -85,7 +118,7 @@ class App extends Component {
         </Pulse>
         <input type="text" ref={ el => this.inputEl = el } onClick={this.optionText}/>
         
-        <div>
+        <div class="test0">
           <p>Number of ruined people today and their reasons below: {this.state.counter}</p>        
           <ul>
           {
@@ -94,9 +127,25 @@ class App extends Component {
           </ul>
         </div>
 
-        <InfiniteLoader>
-
-        </InfiniteLoader>
+        <div class="reasons_list">
+          <InfiniteLoader
+            isRowLoaded={isRowLoaded}
+            loadMoreRows={loadMoreRows}
+            rowCount={remoteRowCount}
+          >
+            {({ onRowsRendered, registerChild }) => (
+              <List
+                height={200}
+                onRowsRendered={onRowsRendered}
+                ref={registerChild}
+                rowCount={remoteRowCount}
+                rowHeight={20}
+                rowRenderer={rowRenderer}
+                width={300}
+              />
+            )}
+          </InfiniteLoader>
+        </div>
 
       </form>
 
