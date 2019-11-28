@@ -54,6 +54,8 @@ h1 {
     text-align: center;
     list-style-position: inside;
     padding-left: 400px;
+    border: blue;
+    border-style: solid;
 }
 
 li {
