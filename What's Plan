@@ -1,7 +1,0 @@
-
-Show the Reasons/Opinions provided by users as scrollable listviews.
-    - It extends as it scrolled down.
-    - I want this to for user to ONLY scroll down the <div> that will contain the list, instead of scrolling down the entire webpage. 
-    
-
-
