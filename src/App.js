@@ -8,38 +8,7 @@ import Pulse from 'react-reveal/Pulse'
 import fire from "./fire";
 import firebase from 'firebase';
 
-import { InfiniteLoader, List } from 'react-virtualized';
 import 'react-virtualized/styles.css'; // only needs to be imported once
-
-///////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////
-// This example assumes you have a way to know/load this information
-var list = [0,1,2];
-var remoteRowCount = 25;
-var wtfisgoing;
-function isRowLoaded ({ index }) {
-  return !!list[index];
-}
-
-function loadMoreRows ({ startIndex, stopIndex }) {
-  return fetch(`path/to/api?startIndex=${startIndex}&stopIndex=${stopIndex}`)
-    .then(response => {
-      // Store response data in list...
-    })
-}
-
-function rowRenderer ({ key, index, style}) {
-  return (
-    <div
-      key={key}
-      style={style}
-    >
-      {list[index]}
-    </div>
-  )
-}
-///////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////
 
 class App extends Component {
   constructor(props) {
@@ -73,8 +42,6 @@ class App extends Component {
     
     // Reset the input textbox  
     this.inputEl.value = ""; 
-
-    list.push(inputValue);
    
   }
 
@@ -126,27 +93,6 @@ class App extends Component {
           }
           </ul>
         </div>
-
-        <div class="reasons_list">
-          <InfiniteLoader
-            isRowLoaded={isRowLoaded}
-            loadMoreRows={loadMoreRows}
-            rowCount={remoteRowCount}
-          >
-            {({ onRowsRendered, registerChild }) => (
-              <List
-                height={200}
-                onRowsRendered={onRowsRendered}
-                ref={registerChild}
-                rowCount={remoteRowCount}
-                rowHeight={20}
-                rowRenderer={rowRenderer}
-                width={300}
-              />
-            )}
-          </InfiniteLoader>
-        </div>
-
       </form>
 
 
