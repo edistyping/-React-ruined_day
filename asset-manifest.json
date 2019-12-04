@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/ruined_day/static/css/main.fb9c2bbb.chunk.css",
+    "main.js": "/ruined_day/static/js/main.f701c2b0.chunk.js",
+    "main.js.map": "/ruined_day/static/js/main.f701c2b0.chunk.js.map",
+    "runtime-main.js": "/ruined_day/static/js/runtime-main.83040e68.js",
+    "runtime-main.js.map": "/ruined_day/static/js/runtime-main.83040e68.js.map",
+    "static/css/2.71916e70.chunk.css": "/ruined_day/static/css/2.71916e70.chunk.css",
+    "static/js/2.e37b644b.chunk.js": "/ruined_day/static/js/2.e37b644b.chunk.js",
+    "static/js/2.e37b644b.chunk.js.map": "/ruined_day/static/js/2.e37b644b.chunk.js.map",
+    "index.html": "/ruined_day/index.html",
+    "precache-manifest.69be39aeb9ef8ba3b1098cf96198885f.js": "/ruined_day/precache-manifest.69be39aeb9ef8ba3b1098cf96198885f.js",
+    "service-worker.js": "/ruined_day/service-worker.js",
+    "static/css/2.71916e70.chunk.css.map": "/ruined_day/static/css/2.71916e70.chunk.css.map",
+    "static/css/main.fb9c2bbb.chunk.css.map": "/ruined_day/static/css/main.fb9c2bbb.chunk.css.map"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.83040e68.js",
+    "static/css/2.71916e70.chunk.css",
+    "static/js/2.e37b644b.chunk.js",
+    "static/css/main.fb9c2bbb.chunk.css",
+    "static/js/main.f701c2b0.chunk.js"
+  ]
+}
